@@ -22,13 +22,13 @@ CREATE TABLE messages (
     PRIMARY KEY (id),
     CONSTRAINT FK_MESSAGE_SENDER_USERS FOREIGN KEY (user_sender_id) REFERENCES users(id),
     CONSTRAINT FK_MESSAGE_RECEIVER_USERS FOREIGN KEY (user_receiver_id) REFERENCES users(id)
-)
+);
 
 CREATE TABLE coaches (
     id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     PRIMARY KEY (id)  
-)
+);
 
 CREATE TABLE companies (
     id INT NOT NULL AUTO_INCREMENT,
@@ -37,7 +37,7 @@ CREATE TABLE companies (
     location VARCHAR(255) NOT NULL,
     logo_path VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE recruiters (
     id INT NOT NULL AUTO_INCREMENT,
@@ -45,7 +45,7 @@ CREATE TABLE recruiters (
     company_id INT NOT NULL,
     phone_number VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE jobs (
     id INT NOT NULL AUTO_INCREMENT,
@@ -57,7 +57,7 @@ CREATE TABLE jobs (
     date_posted_tmstp BIGINT NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT FK_JOBS_COMPANIES FOREIGN KEY (company_id) REFERENCES companies(id)
-)
+);
 
 CREATE TABLE job_applications (
     id INT NOT NULL AUTO_INCREMENT,
@@ -84,7 +84,7 @@ CREATE TABLE job_applications (
     PRIMARY KEY (id),
     CONSTRAINT FK_JOB_APPLICATIONS_JOBS FOREIGN KEY (job_id) REFERENCES jobs(id),
     CONSTRAINT FK_JOB_APPLICATIONS_USERS FOREIGN KEY (user_id) REFERENCES users(id)
-)
+);
 
 CREATE TABLE job_saves (
     id INT NOT NULL AUTO_INCREMENT,
@@ -95,14 +95,14 @@ CREATE TABLE job_saves (
     PRIMARY KEY (id),
     CONSTRAINT FK_JOB_SAVES_JOBS FOREIGN KEY (job_id) REFERENCES jobs(id),
     CONSTRAINT FK_JOB_SAVES_USERS FOREIGN KEY (user_id) REFERENCES users(id)
-)
+);
 
 CREATE TABLE improvments (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE user_improvments (
     id INT NOT NULL AUTO_INCREMENT,
@@ -113,7 +113,7 @@ CREATE TABLE user_improvments (
     PRIMARY KEY (id),
     CONSTRAINT FK_USER_IMPROVMENTS_USERS FOREIGN KEY (user_id) REFERENCES users(id),
     CONSTRAINT FK_USER_IMPROVMENTS_IMPROVMENTS FOREIGN KEY (improvment_id) REFERENCES improvments(id)
-)
+);
 
 CREATE TABLE contact_requests (
     id INT NOT NULL AUTO_INCREMENT,
@@ -128,12 +128,12 @@ CREATE TABLE contact_requests (
     PRIMARY KEY (id),
     CONSTRAINT FK_CONTACT_REQUESTS_SENDER_USERS FOREIGN KEY (user_sender_id) REFERENCES users(id),
     CONSTRAINT FK_CONTACT_REQUESTS_RECEIVER_USERS FOREIGN KEY (user_receiver_id) REFERENCES users(id)
-)
+);
 
 CREATE TABLE jobs_suggestions (
     id INT NOT NULL AUTO_INCREMENT,
     job_id INT NOT NULL,
     user_id INT NOT NULL,
     PRIMARY KEY (id)
-)
+);
 
